@@ -2,7 +2,7 @@
 
 require_once 'ndisimplify.civix.php';
 
-function disable_components(){
+function simplifier_disable_components(){
   $result = civicrm_api3('Setting', 'create', array(
   	'debug' => 1,
   	'sequential' => 1,
@@ -20,7 +20,7 @@ function disable_components(){
 	CRM_Core_DAO::executeQuery('UPDATE civicrm_navigation SET is_active = 0 WHERE id = 63');//Events -> manage price set
 }
 
-function enable_components(){
+function simplifier_enable_components(){
    $result = civicrm_api3('Setting', 'create', array(
   	'debug' => 1,
   	'sequential' => 1,
@@ -83,7 +83,7 @@ function ndisimplify_civicrm_uninstall() {
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_enable
  */
 function ndisimplify_civicrm_enable() {
-disable_components();
+simplifier_disable_components();
   return _ndisimplify_civix_civicrm_enable();
 }
 
@@ -93,7 +93,7 @@ disable_components();
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_disable
  */
 function ndisimplify_civicrm_disable() {
-enable_components();
+simplifier_enable_components();
   return _ndisimplify_civix_civicrm_disable();
 }
 
